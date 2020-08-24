@@ -1,7 +1,7 @@
 from time import sleep
 
 # INTRO
-print('Welcome to perspectives. A text based stealth game developed by amay427 and gaffclant.')
+print('Welcome to perspectives. A text based stealth game developed by amay428 and gaffclant.')
 sleep(2)
 print('You have made it into the soviet factory. Next to you is your partner, Cory. He is from Oaklahoma, and has a deep country accent.')
 sleep(2)
