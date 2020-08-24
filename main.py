@@ -3,7 +3,7 @@ from time import sleep
 # INTRO
 print('Welcome to perspectives. A text based stealth game developed by amay428 and gaffclant.')
 sleep(2)
-print('You have made it into the soviet factory. Next to you is your partner, Cory. He is from Oaklahoma, and has a deep country accent.')
+print('You have made it into the soviet factory. Next to you is your partner, Cory. He is from Oklahoma, and has a deep country accent.')
 sleep(2)
 print('You are in the entrance room of the factory. There is a hallway leading into the main room of the factory.')
 sleep(2)
