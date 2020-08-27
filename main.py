@@ -41,6 +41,7 @@ while done = False
         sleep(2)
         print("Cory looks at you. You look back. Neither of you know what to do, and if you try to tell Cory what to do, they will hear you speak english and you will surley die.")
         sleep(2)
+        end()
         # DECISION 2A
     elif choice1.lower() == "b":
         print(f"{name}: I say we take out those commie bastards! We can each take out one with our gun.")
@@ -93,6 +94,7 @@ while done = False
         print(f"{name}: Let's quickly apply first aid in that corner")
         sleep(5)
         print("Cory: That feels better")
+        end()
     else:
         print("Please enter a valid choice")
 
