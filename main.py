@@ -74,7 +74,25 @@ while done = False
         print("YOU LOST.\nThe guards aren't THAT stupid ya know...")
     elif choice1.lower() == "d":
         done = True
-        print()
+        print(f"{name}: Wear your masks, we will throw tear gas at them")
+        sleep(1)
+        print("Cory: Let me throw it")
+        sleep(4)
+        print(f"{name}: Lets run, get two guys and wear their uniform")
+        sleep(1)
+        print("Cory: Ok")
+        sleep(4)
+        print(f"{name}: I got a guy.")
+        sleep(2)
+        print("Cory: Ahhh")
+        sleep(1)
+        print(f"{name}: What happened?")
+        sleep(2)
+        print("Cory: Im bleeding, he hit me in the leg but I was able to get his uniform")
+        sleep(3)
+        print(f"{name}: Let's quickly apply first aid in that corner")
+        sleep(5)
+        print("Cory: That feels better")
     else:
         print("Please enter a valid choice")
 
