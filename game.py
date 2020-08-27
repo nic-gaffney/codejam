@@ -15,12 +15,12 @@ background = pygame.image.load('floor.png')
 mixer.music.load("soviet_march.wav")
 mixer.music.play(-1)
 
-pygame.display.set_caption("Perspectives")
-icon = pygame.image.load('hero.png')
-pygame.display.set_icon(icon)
+pygame.display.set_caption("Perspectives") #Game title
+icon = pygame.image.load('hero.png') #Imgae icon
+pygame.display.set_icon(icon) 
 
-playerImg = pygame.image.load('hero.png')
-playerX = 400
+playerImg = pygame.image.load('hero.png') #Load in the image of the player
+playerX = 400 #Player starting coordinates
 playerY = 400
 playerX_change = 0
 playerY_change = 0
@@ -33,20 +33,20 @@ enemyX_change = []
 enemyY_change = []
 num_of_enemies = 6
 
-for i in range(num_of_enemies):
+for i in range(num_of_enemies): #Load number of enemies in a for loop
     enemyImg.append(pygame.image.load('enemy.png'))
-    enemyX.append(random.randint(0, 736))
-    enemyY.append(random.randint(50, 150))
-    enemyX_change.append(4)
+    enemyX.append(random.randint(0, 736)) #Spawn enemy at random x coordinate
+    enemyY.append(random.randint(50, 150)) #Spawn enemy at random y coordinate
+    enemyX_change.append(4) 
     enemyY_change.append(40)
 
-wall = pygame.image.load('wall2.png')
+wall = pygame.image.load('wall2.png') #Load image of wall behind which hero hides
 
-def player(x, y):
-    screen.blit(playerImg, (x, y))
+def player(x, y): #define function to place hero in certain coordinates
+    screen.blit(playerImg, (x, y)) #scree.blit places image on the screen
 
 
-def enemy(x, y, i):
+def enemy(x, y, i): #define function to place enemy in certain coordinates
     screen.blit(enemyImg[i], (x, y))
 
 # Game Loop
@@ -54,34 +54,34 @@ running = True
 while running:
 
     # RGB = Red, Green, Blue
-    screen.fill((0, 0, 0))
+    screen.fill((0, 0, 0)) #Fill the screen with black
     # Background Image
-    screen.blit(background, (0, 0))
-    screen.blit(wall, (360, 370))
-    for event in pygame.event.get():
+    screen.blit(background, (0, 0)) #add background layer
+    screen.blit(wall, (360, 370)) #add wall
+    for event in pygame.event.get(): #if user presses x then quit
         if event.type == pygame.QUIT:
             running = False
 
         # if keystroke is pressed check whether its right or left
         if event.type == pygame.KEYDOWN:
             if event.key == pygame.K_LEFT:
-                playerX_change = -1
+                playerX_change = -1 #Change the value of playerX_change
             if event.key == pygame.K_RIGHT:
-                playerX_change = 1
+                playerX_change = 1 #Change the value of playerX_change
             if event.key == pygame.K_UP:
-                playerY_change = -1
+                playerY_change = -1 #Change the value of playerY_change
             if event.key == pygame.K_DOWN:
-                playerY_change = 1
+                playerY_change = 1 #Change the value of playerY_change
 
-        if event.type == pygame.KEYUP:
+        if event.type == pygame.KEYUP: #If user leaves the key, then stop moving 
             if event.key == pygame.K_LEFT or event.key == pygame.K_RIGHT or pygame.K_UP or event.key == pygame.K_DOWN:
                 playerX_change = 0
                 playerY_change = 0
                
-    playerX += playerX_change
-    playerY += playerY_change
+    playerX += playerX_change #Add the value of playerX_change to players x coordinate 
+    playerY += playerY_change #Add the value of playerY_change to players y coordinate
    
-    if playerX <= 0:
+    if playerX <= 0: #If player goes outside the boundary teleport them back in
         playerX = 0
     elif playerX >= 449:
         playerX = 449
@@ -93,7 +93,6 @@ while running:
     # Enemy Movement
     for i in range(num_of_enemies):
 
-        # Game Over
         if enemyY[i] > 440:
             for j in range(num_of_enemies):
                 enemyY[j] = 2000
@@ -110,5 +109,5 @@ while running:
 
         enemy(enemyX[i], enemyY[i], i)
      
-    player(playerX, playerY)
-    pygame.display.update()
+    player(playerX, playerY) #place player in the desired position
+    pygame.display.update() #update the screen
