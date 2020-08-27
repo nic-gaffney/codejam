@@ -77,3 +77,21 @@ while done = False
         print()
     else:
         print("Please enter a valid choice")
+
+
+def end():
+    print('You make it out of the factory, barely alive. You have taken the uranium that the soviets needed for the missiles, and now they are powerless.')
+    sleep(2)
+    print("As you are making your way towards the helicopter, you notice Cory's wound getting worse, and you are having to support his weight more and more.")
+    sleep(2)
+    print(f"{name}: Cmon Cory! Stay awake! We're almost there!")
+    sleep(2)
+    print("Cory: I... I can make it... its just... just a leg wound...")
+    sleep(3)
+    print("You both know its not 'just' a leg wound. Thats a major artery that was hit, and he's going to bleed out if you don't make it back to base in time")
+    sleep(2)
+    print("As you both load on the helicopter, you breath a sigh of releif. It was done, and you made it out alive. The on board paremedic is giving Cory a tourniquet to stay alive and stop the bleeding.")
+    sleep(3)
+    print("You wonder, 'Why didn't I think of that...'")
+    sleep(1)
+    print("And now, you and Cory are considered heroes of America. Great Job!")
