@@ -104,10 +104,20 @@ while running:
     for i in range(num_of_enemies):
 
         if enemyY[i] > 440:
-            for j in range(num_of_enemies):
-                enemyY[j] = 2000
-            game_over_text()
-            break
+            enemyImg = []
+            enemyX = []
+            enemyY = []
+            enemyX_change = []
+            enemyY_change = []
+            num_of_enemies = 6
+
+            for i in range(num_of_enemies): #Load number of enemies in a for loop
+                enemyImg.append(pygame.image.load('enemy.png'))
+                enemyX.append(random.randint(0, 480)) #Spawn enemy at random x coordinate
+                enemyY.append(random.randint(50, 150)) #Spawn enemy at random y coordinate
+                enemyX_change.append(1)
+                enemyY_change.append(20)
+            
 
         enemyX[i] += enemyX_change[i]
         if enemyX[i] <= 0:
