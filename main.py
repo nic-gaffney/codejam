@@ -3,7 +3,24 @@ from time import sleep
 # INTRO
 print("Welcome to perspectives. A text based stealth game developed by amay428 and gaffclant.")
 sleep(2)
-
+def end():
+    print("After grabbing the uranium that the soviets desperately needed, you run out of the factory")
+    sleep(2)
+    print('You make it out of the factory, barely alive. You have taken the uranium that the soviets needed for the missiles, and now they are powerless.')
+    sleep(2)
+    print("As you are making your way towards the helicopter, you notice Cory's wound getting worse, and you are having to support his weight more and more.")
+    sleep(2)
+    print(f"{name}: Cmon Cory! Stay awake! We're almost there!")
+    sleep(2)
+    print("Cory: I... I can make it... its just... just a leg wound...")
+    sleep(3)
+    print("You both know its not 'just' a leg wound. Thats a major artery that was hit,the first aid is starting to deteriorate, and he's going to bleed out if you don't make it back to base in time")
+    sleep(2)
+    print("As you both load on the helicopter, you breath a sigh of releif. It was done, and you made it out alive. The on board paremedic is giving Cory a tourniquet to stay alive and stop the bleeding.")
+    sleep(3)
+    print("You wonder, 'Why didn't I think of that...'")
+    sleep(1)
+    print("And now, you and Cory are considered heroes of America. Great Job!")
 loop = True
 while loop:
     opt = int(input("1) Text based mode (no graphics, better story)\n2) Gui mode (Less story, 16 bit graphics)\n"))
@@ -35,7 +52,7 @@ print(f"{name}: Right... the mission...")
 sleep(2)
 print(f"Cory: So how are we going to get past the couple of of guards they have in that hallway?")
 sleep(2)
-
+done = False
 # FIRST DECISION
 while done == False:
     choice1 = input("How are you going to sneak past the guards?\nA: Disquise as the dead guards outside.\nB: Take em out\nC: Toss a coin and lead them away\nD: Try to sneak past normally\nInput: ")
@@ -56,6 +73,7 @@ while done == False:
         sleep(2)
         print("Cory looks at you. You look back. Neither of you know what to do, and if you try to tell Cory what to do, they will hear you speak english and you will surley die.")
         sleep(2)
+        print('Finally, you shoot them both and dash to the storage conainer. There is bullet fire everywhere. Cory gets hit, so you apply first aid.')
         end()
         # DECISION 2A
     elif choice1.lower() == "b":

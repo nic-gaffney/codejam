@@ -1,7 +1,7 @@
 import random
 import pygame
 import math
-import time
+from time import sleep
 
 # Intialize the pygame
 pygame.init()
@@ -18,9 +18,13 @@ white = (255, 255, 255)
 
 mode = 0
 
-font = pygame.font.Font('freesansbold.ttf', 11) 
-text1 = font.render('You have made it into the soviet factory. You are in the entrance room of the factory. There is a hallway leading into the main room of the factory. You hold nothing but a silenced pistol. And of course, some general tools that can help on a stealth mission like this where you have to lurk.', True, black, white) 
-text2 = font.render(' There is a hallway leading into the main room of the factory. You hold nothing but a silenced pistol. And of course, some general tools that can help on a stealth mission like this where you have to lurk.', True, black, white)
+font = pygame.font.Font('freesansbold.ttf', 11)
+text1 = font.render('You have made it into the soviet factory. You are in the entrance room of the factory.', True, black, white)
+text2 = font.render('There is a hallway leading into the main room of the factory. ', True, black, white)
+text3 = font.render('You hold nothing but a silenced pistol.And of course, some general tools that ', True, black, white)
+text4 = font.render('can help on a stealth mission like this where you have to lurk ', True, black, white)
+
+
 
 num = 0
 
@@ -87,11 +91,7 @@ while running:
     # Background Image
     screen.blit(background, (0, 0)) #add background layer
     screen.blit(wall, (360, 370)) #add wall
-    if num == 1:
-        screen.blit(text, (0, 450))
-    else:
-        print('error')
-    screen.blit(coin, (100, 100))
+
     for event in pygame.event.get(): #if user presses x then quit
         if event.type == pygame.QUIT:
             running = False
@@ -156,6 +156,7 @@ while running:
             del enemyX_change[i]
             del enemyY_change[i]
             num_of_enemies += -1
+            break
 
 
         enemyX[i] += enemyX_change[i]
