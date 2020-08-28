@@ -3,6 +3,21 @@ from time import sleep
 # INTRO
 print("Welcome to perspectives. A text based stealth game developed by amay428 and gaffclant.")
 sleep(2)
+
+loop = True
+while loop:
+    opt = int(input("1) Text based mode (no graphics, better story)\n2) Gui mode (Less story, 16 bit graphics)\n"))
+    if opt == 1:
+        loop = False
+        continue
+    elif opt == 2:
+        loop = False
+        import game
+        quit()
+    else:
+        loop = True
+        print('Please choose a number 1 or 2')
+sleep(2)
 print("You have made it into the soviet factory. Next to you is your partner, Cory. He is from Oaklahoma, and has a deep country accent.")
 sleep(2)
 print("You are in the entrance room of the factory. There is a hallway leading into the main room of the factory.")
@@ -22,7 +37,7 @@ print(f"Cory: So how are we going to get past the couple of of guards they have 
 sleep(2)
 
 # FIRST DECISION
-while done = False
+while done == False:
     choice1 = input("How are you going to sneak past the guards?\nA: Disquise as the dead guards outside.\nB: Take em out\nC: Toss a coin and lead them away\nD: Try to sneak past normally\nInput: ")
 
     if choice1.lower() == "a":

@@ -117,7 +117,7 @@ while running:
                 enemyY.append(random.randint(50, 150)) #Spawn enemy at random y coordinate
                 enemyX_change.append(1)
                 enemyY_change.append(20)
-            
+
 
         enemyX[i] += enemyX_change[i]
         if enemyX[i] <= 0:
