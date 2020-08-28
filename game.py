@@ -179,8 +179,8 @@ while running:
             enemyX_change[i] = -3
             enemyY[i] += enemyY_change[i]
 
-        if playerX <= enemyX[i]-3: #If a player comes near a soldier, then the soldier kills it
-            if playerY <= 17:
+        if playerX >= enemyX[i]-20 and playerX <= enemyX[i]+20: #If a player comes near a soldier, then the soldier kills it
+            if playerY <= enemyY[i]+20 and playerY >= enemyY[i]-20:
                 game_over_text()
                 print("You lost")
                 quit()
@@ -199,7 +199,7 @@ while running:
         else:
             pass
 
-                
+
 
         enemy(enemyX[i], enemyY[i], i) #Teleport enemy to position
 
