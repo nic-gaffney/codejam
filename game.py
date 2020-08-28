@@ -1,6 +1,7 @@
 import random
 import pygame
-from pygame import mixer
+import math
+import time
 
 # Intialize the pygame
 pygame.init()
@@ -10,10 +11,18 @@ screen = pygame.display.set_mode((480, 480))
 
 # Background
 background = pygame.image.load('floor.png')
+coin = pygame.image.load('coin2.jpg')
 
-# Sound
-mixer.music.load("soviet_march.wav")
-mixer.music.play(-1)
+black = (0, 0, 0)
+white = (255, 255, 255)
+
+mode = 0
+
+font = pygame.font.Font('freesansbold.ttf', 11) 
+text1 = font.render('You have made it into the soviet factory. You are in the entrance room of the factory. There is a hallway leading into the main room of the factory. You hold nothing but a silenced pistol. And of course, some general tools that can help on a stealth mission like this where you have to lurk.', True, black, white) 
+text2 = font.render(' There is a hallway leading into the main room of the factory. You hold nothing but a silenced pistol. And of course, some general tools that can help on a stealth mission like this where you have to lurk.', True, black, white)
+
+num = 0
 
 pygame.display.set_caption("Perspectives") #Game title
 icon = pygame.image.load('hero.png') #Imgae icon
@@ -33,6 +42,13 @@ enemyX_change = []
 enemyY_change = []
 num_of_enemies = 6
 
+bulletImg = pygame.image.load('bullet.png')
+bulletX = 0
+bulletY = 480
+bulletX_change = 0
+bulletY_change = 10
+bullet_state = "ready"
+
 for i in range(num_of_enemies): #Load number of enemies in a for loop
     enemyImg.append(pygame.image.load('enemy.png'))
     enemyX.append(random.randint(0, 480)) #Spawn enemy at random x coordinate
@@ -49,15 +65,18 @@ def player(x, y): #define function to place hero in certain coordinates
 def enemy(x, y, i): #define function to place enemy in certain coordinates
     screen.blit(enemyImg[i], (x, y))
 
-def game_over_text():
-    X = 480
-    Y = 480
-    font = pygame.font.Font('freesansbold.ttf', 32)
-    text = font.render('Game Over',True,(255,0,0),(0,0,0))
-    textRect = text.get_rect()
-    textRect.center = (X // 2, Y // 2)
-    screen.blit(text, textRect)
+def fire_bullet(x, y):
+    global bullet_state
+    bullet_state = "fire"
+    screen.blit(bulletImg, (x + 16, y + 10))
 
+
+def isCollision(enemyX, enemyY, bulletX, bulletY):
+    distance = math.sqrt(math.pow(enemyX - bulletX, 2) + (math.pow(enemyY - bulletY, 2)))
+    if distance < 27:
+        return True
+    else:
+        return False
 
 # Game Loop
 running = True
@@ -68,6 +87,11 @@ while running:
     # Background Image
     screen.blit(background, (0, 0)) #add background layer
     screen.blit(wall, (360, 370)) #add wall
+    if num == 1:
+        screen.blit(text, (0, 450))
+    else:
+        print('error')
+    screen.blit(coin, (100, 100))
     for event in pygame.event.get(): #if user presses x then quit
         if event.type == pygame.QUIT:
             running = False
@@ -82,6 +106,11 @@ while running:
                 playerY_change = -1 #Change the value of playerY_change
             if event.key == pygame.K_DOWN:
                 playerY_change = 1 #Change the value of playerY_change
+            if event.key == pygame.K_SPACE:
+                if bullet_state is "ready":
+                    # Get the current x cordinate of the player
+                    bulletX = playerX
+                    fire_bullet(bulletX, bulletY)
 
         if event.type == pygame.KEYUP: #If user leaves the key, then stop moving
             if event.key == pygame.K_LEFT or event.key == pygame.K_RIGHT or pygame.K_UP or event.key == pygame.K_DOWN:
@@ -118,6 +147,16 @@ while running:
                 enemyX_change.append(1)
                 enemyY_change.append(20)
 
+        collision = isCollision(enemyX[i], enemyY[i], bulletX, bulletY)
+        if collision:
+            bulletY = 480
+            bullet_state = "ready"
+            del enemyX[i]
+            del enemyY[i]
+            del enemyX_change[i]
+            del enemyY_change[i]
+            num_of_enemies += -1
+
 
         enemyX[i] += enemyX_change[i]
         if enemyX[i] <= 0:
@@ -128,6 +167,14 @@ while running:
             enemyY[i] += enemyY_change[i]
 
         enemy(enemyX[i], enemyY[i], i)
+
+    if bulletY <= 0:
+        bulletY = 480
+        bullet_state = "ready"
+
+    if bullet_state is "fire":
+        fire_bullet(bulletX, bulletY)
+        bulletY -= bulletY_change
 
     player(playerX, playerY) #place player in the desired position
     pygame.display.update() #update the screen
