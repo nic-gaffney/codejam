@@ -189,8 +189,8 @@ while running:
         else:
             pass
 
-        if playerX <= 240-3: #If a player is near the uranium, say tht they won
-            if playerY <= 20-3:
+        if playerX <= 250 and playerX >= 230: #If a player is near the uranium, say tht they won
+            if playerY <= 30 and playerY >= 10:
                 you_won_text()
                 print("You won!")
                 quit()
