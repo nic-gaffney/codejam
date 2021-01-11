@@ -80,15 +80,15 @@ def isCollision(enemyX, enemyY, bulletX, bulletY): #define a function to check f
     else:
         return False
 
-def game_over_text(): #Show losin text
-    over_font = pygame.font.Font('freesansbold.ttf', 25)
-    over_text = over_font.render("A SOVIET SOLDIER KILLED YOU", True, (255, 0, 0))
-    screen.blit(over_text, (35, 250))
+def game_over_text(): #Show losing text
+    over_text = font.render("A SOVIET SOLDIER KILLED YOU", True, black, white)
+    screen.blit(over_text, (240, 240))
+    time.sleep(5)
 
 def you_won_text(): #Show winning text
-    won_font = pygame.font.Font('freesansbold.ttf', 25)
-    won_text = won_font.render("You won!", True, (255, 0, 0))
-    screen.blit(won_text, (35, 250))
+    won_text = font.render("You won!", True, black, white)
+    screen.blit(won_text, (240, 240))
+    time.sleep(5)
 
 # Game Loop
 running = True
@@ -182,7 +182,7 @@ while running:
         if playerX >= enemyX[i]-20 and playerX <= enemyX[i]+20: #If a player comes near a soldier, then the soldier kills it
             if playerY <= enemyY[i]+20 and playerY >= enemyY[i]-20:
                 game_over_text()
-                print("You lost")
+                print("You lost :(")
                 quit()
             else:
                 pass
@@ -212,4 +212,4 @@ while running:
         bulletY -= bulletY_change
 
     player(playerX, playerY) #place player in the desired position
-    pygame.display.update() #update the screen
+    pygame.display.flip() #update the screen
